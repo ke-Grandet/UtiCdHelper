@@ -1,0 +1,34 @@
+<UserControl x:Class="UtiCdHelper.RecognitionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="AreaHost" HorizontalAlignment="Center" />
+        </ScrollViewer>
+
+        <TextBlock Grid.Row="1"
+                   x:Name="PollInfo"
+                   Margin="0,12,0,0"
+                   HorizontalAlignment="Center"
+                   FontSize="12"
+                   TextWrapping="Wrap"
+                   Foreground="{StaticResource MutedForegroundBrush}" />
+
+        <Button Grid.Row="2"
+                Content="返回"
+                Width="120"
+                Height="36"
+                HorizontalAlignment="Center"
+                Margin="0,14,0,0"
+                Click="OnBackClick" />
+
+    </Grid>
+</UserControl>

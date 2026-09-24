@@ -1,0 +1,72 @@
+<UserControl x:Class="UtiCdHelper.HotKeyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl x:Name="ItemList" HorizontalAlignment="Center">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Border Height="1"
+                                    Background="{StaticResource NormalBorderBrush}"
+                                    Margin="0,14,0,8"
+                                    Visibility="{Binding IsGroupStart, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                            <Grid Width="500" Margin="0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="210" />
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding Name}"
+                                           FontSize="14"
+                                           VerticalAlignment="Center" />
+
+                                <TextBox Grid.Column="1"
+                                         Text="{Binding DisplayText, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         Height="32"
+                                         Cursor="Hand"
+                                         ToolTip="点击后按下组合键，Backspace 清除"
+                                         PreviewKeyDown="OnHotKeyPreviewKeyDown" />
+
+                                <Button Grid.Column="2"
+                                        Content="默认"
+                                        Width="56"
+                                        Height="30"
+                                        FontSize="12"
+                                        Margin="0,0,14,0"
+                                        ToolTip="恢复为默认快捷键"
+                                        Click="OnResetClick" />
+
+                                <TextBlock Grid.Column="3"
+                                           Text="{Binding StatusText}"
+                                           Foreground="{StaticResource DangerBrush}"
+                                           FontSize="12"
+                                           VerticalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button Grid.Row="1"
+                Content="返回"
+                Width="120"
+                Height="36"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0"
+                Click="OnBackClick" />
+    </Grid>
+</UserControl>

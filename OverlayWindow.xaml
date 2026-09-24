@@ -1,0 +1,59 @@
+<Window x:Class="UtiCdHelper.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OverlayWindow"
+        Width="320"
+        Height="42"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Topmost="True"
+        IsHitTestVisible="False"
+        Focusable="False">
+    <!-- Transparent 背景让整块矩形都能命中鼠标，调节模式下才打开命中测试 -->
+    <Grid x:Name="Root" Background="Transparent">
+
+        <StackPanel x:Name="DotRow" Orientation="Horizontal">
+            <Border x:Name="Dot0" Style="{StaticResource DotStyle}">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock x:Name="DotText0" Style="{StaticResource DotTextStyle}" />
+                </Viewbox>
+            </Border>
+            <Border x:Name="Dot1" Style="{StaticResource DotStyle}">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock x:Name="DotText1" Style="{StaticResource DotTextStyle}" />
+                </Viewbox>
+            </Border>
+            <Border x:Name="Dot2" Style="{StaticResource DotStyle}">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock x:Name="DotText2" Style="{StaticResource DotTextStyle}" />
+                </Viewbox>
+            </Border>
+            <Border x:Name="Dot3" Style="{StaticResource DotStyle}">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock x:Name="DotText3" Style="{StaticResource DotTextStyle}" />
+                </Viewbox>
+            </Border>
+            <Border x:Name="Dot4" Style="{StaticResource DotStyle}">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock x:Name="DotText4" Style="{StaticResource DotTextStyle}" />
+                </Viewbox>
+            </Border>
+        </StackPanel>
+
+        <!-- 调节模式下才出现的轮廓提示，勾出自当前摆放占用的整块矩形 -->
+        <Border x:Name="AdjustFrame"
+                BorderBrush="{StaticResource AccentBrush}"
+                BorderThickness="1"
+                SnapsToDevicePixels="True"
+                Visibility="Collapsed"
+                IsHitTestVisible="False">
+            <Border.Background>
+                <SolidColorBrush Color="#142196F3" />
+            </Border.Background>
+        </Border>
+
+    </Grid>
+</Window>

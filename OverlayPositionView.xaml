@@ -1,0 +1,107 @@
+<UserControl x:Class="UtiCdHelper.OverlayPositionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,24">
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
+                <TextBlock Text="坐标"
+                           Width="72"
+                           FontSize="13"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="X"
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Margin="0,0,8,0"
+                           Foreground="{StaticResource MutedForegroundBrush}" />
+                <TextBox x:Name="BoxX"
+                         Width="80"
+                         HorizontalContentAlignment="Center"
+                         ToolTip="悬浮窗左上角的横坐标（屏幕像素）"
+                         LostFocus="OnValueChanged"
+                         PreviewTextInput="OnNumberPreviewTextInput" />
+                <TextBlock Text="Y"
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Margin="16,0,8,0"
+                           Foreground="{StaticResource MutedForegroundBrush}" />
+                <TextBox x:Name="BoxY"
+                         Width="80"
+                         HorizontalContentAlignment="Center"
+                         ToolTip="悬浮窗左上角的纵坐标（屏幕像素）"
+                         LostFocus="OnValueChanged"
+                         PreviewTextInput="OnNumberPreviewTextInput" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
+                <TextBlock Text="间距"
+                           Width="72"
+                           FontSize="13"
+                           VerticalAlignment="Center" />
+                <TextBox x:Name="BoxSpacing"
+                         Width="80"
+                         HorizontalContentAlignment="Center"
+                         ToolTip="相邻两个圆点之间的空白宽度（0-80 像素）"
+                         LostFocus="OnValueChanged"
+                         PreviewTextInput="OnNumberPreviewTextInput" />
+                <TextBlock Text="像素"
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Margin="8,0,0,0"
+                           Foreground="{StaticResource MutedForegroundBrush}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="大小"
+                           Width="72"
+                           FontSize="13"
+                           VerticalAlignment="Center" />
+                <TextBox x:Name="BoxSize"
+                         Width="80"
+                         HorizontalContentAlignment="Center"
+                         ToolTip="单个圆点的高度（12-64 像素），宽度按比例跟随"
+                         LostFocus="OnValueChanged"
+                         PreviewTextInput="OnNumberPreviewTextInput" />
+                <TextBlock Text="像素"
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Margin="8,0,0,0"
+                           Foreground="{StaticResource MutedForegroundBrush}" />
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource HelpBodyStyle}"
+                       Margin="72,16,0,0">
+                · 拖动悬浮窗本体：移动位置。<LineBreak />
+                · 按住 Shift 横向拖动：改变圆点大小。<LineBreak />
+                · 在悬浮窗上滚滚轮：改变圆点间距（Shift 每次 5 像素）。<LineBreak />
+                · 本界面打开时用方向键微调：方向移动 1 像素，Ctrl 移动 10 像素。<LineBreak />
+                · Shift + 左右改间距，Shift + 上下改大小。<LineBreak />
+                · 离开本界面自动恢复鼠标穿透，悬浮窗不再挡操作。
+            </TextBlock>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Content="默认"
+                    Width="120"
+                    Height="36"
+                    ToolTip="恢复为横向居中、贴屏幕顶的默认摆放"
+                    Click="OnResetClick" />
+            <Button Content="返回"
+                    Width="120"
+                    Height="36"
+                    Margin="12,0,0,0"
+                    Click="OnBackClick" />
+        </StackPanel>
+    </Grid>
+</UserControl>

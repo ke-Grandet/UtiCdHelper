@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <!-- 主界面左下角显示的就是这个版本号 -->
+    <Version>1.0.0</Version>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <!-- 发布后把启动脚本拷到 Portable 同级，方便直接双击（脚本本身在仓库根目录受版本控制） -->
+  <Target Name="CopyPortableLauncher" AfterTargets="Publish">
+    <Copy SourceFiles="UtiCdHelper.bat"
+          DestinationFolder="$(PublishDir).."
+          Condition="Exists('UtiCdHelper.bat')" />
+  </Target>
+
+  <ItemGroup>
+    <EmbeddedResource Include="tessdata\eng.traineddata" />
+    <EmbeddedResource Include="tessdata\chi_sim.traineddata" />
+  </ItemGroup>
+
+</Project>

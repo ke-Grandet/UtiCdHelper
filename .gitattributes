@@ -1,0 +1,28 @@
+# 文本/二进制判定交给 Git，仓库里统一存 LF
+* text=auto
+
+# 批处理必须是 CRLF：LF 结尾时多行括号块（if (...)）可能被 cmd 解析失败
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 明确是文本的文件
+*.cs text diff=csharp
+*.xaml text
+*.csproj text
+*.pubxml text
+*.sln text eol=crlf
+*.json text
+*.md text
+*.txt text
+
+# 明确是二进制，禁止任何换行转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.dll binary
+*.exe binary
+*.pdb binary
+*.snk binary
+*.traineddata binary

@@ -1,0 +1,33 @@
+<Window x:Class="UtiCdHelper.RegionSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RegionSelectorWindow"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="#90000000"
+        Topmost="True"
+        ShowInTaskbar="False"
+        WindowState="Maximized"
+        Cursor="Cross">
+    <Grid>
+        <Canvas x:Name="SelectionCanvas">
+            <Rectangle x:Name="Selection"
+                       Fill="#302196F3"
+                       Stroke="{StaticResource AccentBrush}"
+                       StrokeThickness="1"
+                       Visibility="Collapsed" />
+        </Canvas>
+
+        <Border Background="#CC1C1C1E"
+                CornerRadius="4"
+                Padding="12,8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,24,0,0">
+            <TextBlock x:Name="Hint"
+                       Text="按住鼠标左键框选区域，松开确认，Esc 取消"
+                       FontSize="14" />
+        </Border>
+    </Grid>
+</Window>

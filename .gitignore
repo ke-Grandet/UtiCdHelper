@@ -1,0 +1,25 @@
+# 构建产物
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# 用户数据 / 发布配置
+UserSettings/
+*.user
+*.suo
+*.userprefs
+
+# 运行期生成的配置（默认配置建议随仓库提供，故不排除）
+utiCdHelper识图设置.json
+utiCdHelper快捷键设置.json
+utiCdHelper浮窗设置.json
+
+# Rider / VS
+.vs/
+.idea/
+*.DotSettings.user
+
+# 系统
+Thumbs.db
+desktop.ini

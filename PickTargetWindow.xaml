@@ -1,0 +1,82 @@
+<Window x:Class="UtiCdHelper.PickTargetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PickTargetWindow"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Width="480"
+        Height="240"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        ShowInTaskbar="False"
+        Background="{StaticResource AppBackgroundBrush}"
+        Foreground="{StaticResource ForegroundBrush}">
+    <Grid>
+
+        <Border BorderBrush="{StaticResource NormalBorderBrush}" BorderThickness="1" Padding="24">
+            <!-- 宽度锁成方格行的宽度，水平垂直都居中 -->
+            <StackPanel Width="340"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBlock x:Name="TitleText"
+                           FontSize="16"
+                           HorizontalAlignment="Left"
+                           Margin="6,0,0,0"
+                           TextTrimming="CharacterEllipsis" />
+
+                <ItemsControl x:Name="CellList" Margin="0,14,0,0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <!-- 横向排列，间距由每项的 Margin 决定，与主界面方格一致 -->
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!-- 宽度锁成格子宽度，名字行不会把格子挤歪 -->
+                            <StackPanel Width="56" Margin="6,0">
+
+                                <!-- 与主界面一致：格子上方显示已记录的名字，没有就留白 -->
+                                <TextBlock Text="{Binding Name}"
+                                           Height="18"
+                                           FontSize="12"
+                                           MaxWidth="68"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextTrimming="CharacterEllipsis"
+                                           Margin="0,0,0,2"
+                                           ToolTip="{Binding Name}"
+                                           Foreground="{StaticResource MutedForegroundBrush}" />
+
+                                <Button Height="56"
+                                        Padding="0"
+                                        Click="OnCellClick">
+                                    <TextBlock Text="{Binding DisplayText}" FontSize="20" />
+                                </Button>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <TextBlock Text="点击方格填入新数字，Esc 或 ✕ 取消"
+                           Margin="0,20,0,0"
+                           HorizontalAlignment="Center"
+                           FontSize="12"
+                           Foreground="{StaticResource MutedForegroundBrush}" />
+
+            </StackPanel>
+        </Border>
+
+        <!-- 关闭按钮单独放在最上层，紧贴窗口右上角，不受内容内边距影响 -->
+        <Button Content="✕"
+                Width="36"
+                Height="32"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Style="{StaticResource TitleBarButtonStyle}"
+                Click="OnCloseClick" />
+
+    </Grid>
+</Window>
